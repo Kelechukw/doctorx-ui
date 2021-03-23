@@ -8,6 +8,7 @@ import "jquery/dist/jquery.js";
 import "./assets/styles/bootstrap4/bootstrap.min.css";
 import "./assets/styles/main_styles.css";
 import "./assets/styles/responsive.css";
+import "./assets/styles/form.css";
 
 ReactDOM.render(
   <React.StrictMode>

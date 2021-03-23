@@ -11,7 +11,7 @@ const MainRoutes = () => {
     <BrowserRouter>
       <Switch>
         <PublicRoute exact path="/" component={Homepage} />
-        <PublicRoute exact path="/logoin" component={Login} />
+        <PublicRoute exact path="/login" component={Login} />
         <ProtectedRoute exact path="/signout" component={Signout} />
       </Switch>
     </BrowserRouter>

@@ -1,6 +1,6 @@
 import React from "react";
 // import store from "store";
-// import { Link } from "react-router-dom";
+import { Link } from "react-router-dom";
 
 const Header = ({ handleToggleSideBar, handleToggleMobileSideBar }) => {
   // const user = store.get("lola_user");
@@ -34,11 +34,9 @@ const Header = ({ handleToggleSideBar, handleToggleMobileSideBar }) => {
                       <li>
                         <a href="about.html">Our Doctors</a>
                       </li>
+
                       <li>
-                        <a href="dlogin.html">Doctor Log in</a>
-                      </li>
-                      <li>
-                        <a href="plogin.html">Patient Log in</a>
+                        <Link to="/login">Log in</Link>
                       </li>
                       <li>
                         <a href="chat.html">Chat with Doctor</a>
