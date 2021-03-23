@@ -8,11 +8,6 @@ import "jquery/dist/jquery.js";
 import "./assets/styles/bootstrap4/bootstrap.min.css";
 import "./assets/styles/main_styles.css";
 import "./assets/styles/responsive.css";
-import "./assets/plugins/OwlCarousel/owl.carousel.css";
-import "./assets/plugins/OwlCarousel/owl.theme.default.css";
-import "./assets/plugins/OwlCarousel/animate.css";
-
-import "./utils/fontawesome";
 
 ReactDOM.render(
   <React.StrictMode>
