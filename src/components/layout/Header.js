@@ -29,17 +29,17 @@ const Header = ({ handleToggleSideBar, handleToggleMobileSideBar }) => {
                   <nav className="main_nav ml-auto">
                     <ul>
                       <li>
-                        <a href="index.html">Home</a>
+                        <Link to="/">Home</Link>
                       </li>
                       <li>
-                        <a href="about.html">Our Doctors</a>
+                        <Link to="/about">Our Doctors</Link>
                       </li>
 
                       <li>
                         <Link to="/login">Log in</Link>
                       </li>
                       <li>
-                        <a href="chat.html">Chat with Doctor</a>
+                        <Link to="/chat">Chat with Doctor</Link>
                       </li>
                     </ul>
                   </nav>

@@ -10,6 +10,9 @@ import "./assets/styles/main_styles.css";
 import "./assets/styles/responsive.css";
 import "./assets/styles/form.css";
 
+import "./assets/styles/chat.css";
+import "./assets/styles/about.css";
+
 ReactDOM.render(
   <React.StrictMode>
     <ErrorBoundary>
