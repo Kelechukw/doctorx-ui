@@ -5,7 +5,6 @@ import { validateAll } from "indicative/validator";
 // import lolaImage from "../../assets/images/lola.png";
 import { triggerError, triggerSuccess } from "../../components/alerts";
 import { signInAction } from "../../api";
-import { FontAwesomeIcon as FaIcon } from "@fortawesome/react-fontawesome";
 import PageHelmet from "../../components/pageHelmet";
 
 const Login = (props) => {
@@ -103,9 +102,7 @@ const Login = (props) => {
                     onChange={handleInputChange}
                   />
                   <span className="focus-input100"></span>
-                  <span className="symbol-input100">
-                    <FaIcon icon="envelope" />
-                  </span>
+                  <span className="symbol-input100"></span>
                 </div>
                 {error && <div className="red-text">{error.userId}</div>}
                 <div
@@ -120,20 +117,11 @@ const Login = (props) => {
                     onChange={handleInputChange}
                   />
                   <span className="focus-input100"></span>
-                  <span className="symbol-input100">
-                    <FaIcon icon="unlock" />
-                  </span>
+                  <span className="symbol-input100"></span>
                 </div>
                 {error && <div className="red-text">{error.password}</div>}
                 <div className="container-login100-form-btn">
-                  <button className="login100-form-btn">
-                    {" "}
-                    {loading ? (
-                      <FaIcon icon="spinner" className="fa-spin fa-2x" />
-                    ) : (
-                      "Login"
-                    )}
-                  </button>
+                  <button className="login100-form-btn">login</button>
                 </div>
                 <div className="text-center p-t-12">
                   <span className="txt1 m-r-5">Forgot</span>
