@@ -1,12 +1,28 @@
 import React from "react";
-// import store from "store";
+import store from "store";
+import { v4 as uuidv4 } from "uuid";
 import { Link } from "react-router-dom";
 
 const Header = ({ handleToggleSideBar, handleToggleMobileSideBar }) => {
-  // const user = store.get("lola_user");
+  const user = store.get("spn_user");
+
+  const userLinks = [
+    {
+      name: "Chat with a doctor",
+      link: `/chat?sessionId=${uuidv4()}`,
+    },
+  ];
+
+  const doctorLinks = [
+    {
+      name: "Waiting room",
+      link: "/waiting-room",
+    },
+  ];
+
   return (
     <>
-      <header className="header trans_200">
+      <header className="header trans_200 mb-5">
         <div className="top_bar">
           <div className="container">
             <div className="row">
@@ -34,13 +50,33 @@ const Header = ({ handleToggleSideBar, handleToggleMobileSideBar }) => {
                       <li>
                         <Link to="/about">Our Doctors</Link>
                       </li>
-
-                      <li>
-                        <Link to="/login">Log in</Link>
-                      </li>
-                      <li>
-                        <Link to="/chat">Chat with Doctor</Link>
-                      </li>
+                      {user && user.token ? (
+                        <>
+                          {user.role === "user"
+                            ? userLinks.map((link) => (
+                                <li>
+                                  <Link to={link.link}>{link.name}</Link>
+                                </li>
+                              ))
+                            : doctorLinks.map((link) => (
+                                <li>
+                                  <Link to={link.link}>{link.name}</Link>
+                                </li>
+                              ))}
+                          <li>
+                            <Link to="/signout">Logout</Link>
+                          </li>
+                        </>
+                      ) : (
+                        <>
+                          <li>
+                            <Link to="/login">Log in</Link>
+                          </li>{" "}
+                          <li>
+                            <Link to="/signup">Signup</Link>
+                          </li>
+                        </>
+                      )}
                     </ul>
                   </nav>
                   <div className="hamburger ml-auto">

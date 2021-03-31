@@ -9,16 +9,12 @@ const instance = axios.create({
 
 instance.interceptors.request.use(
   (config) => {
-    const token = store.get("accessToken");
-    const tenantSecret = process.env.REACT_APP_TENANT_TOKEN;
+    const token = store.get("token");
 
     if (typeof token !== "undefined" && token !== "undefined") {
-      config.headers["Access-Token"] = `${token}`;
-      config.headers["Secret"] = tenantSecret;
       config.headers["Authorization"] = `Bearer ${token}`;
       config.headers["Content-Type"] = "application/json";
     } else {
-      config.headers["Secret"] = tenantSecret;
       config.headers["Content-Type"] = "application/json";
     }
 

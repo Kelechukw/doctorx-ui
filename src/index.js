@@ -2,6 +2,7 @@ import React from "react";
 import ReactDOM from "react-dom";
 import ErrorBoundary from "./components/ErrorBoundary";
 import MainRoutes from "./routes";
+import { socket, SocketContext } from "./socket/socket";
 
 import "bootstrap/dist/js/bootstrap.min.js";
 import "jquery/dist/jquery.js";
@@ -15,9 +16,11 @@ import "./assets/styles/about.css";
 
 ReactDOM.render(
   <React.StrictMode>
-    <ErrorBoundary>
-      <MainRoutes />
-    </ErrorBoundary>
+    <SocketContext.Provider value={socket}>
+      <ErrorBoundary>
+        <MainRoutes />
+      </ErrorBoundary>
+    </SocketContext.Provider>
   </React.StrictMode>,
   document.getElementById("root")
 );

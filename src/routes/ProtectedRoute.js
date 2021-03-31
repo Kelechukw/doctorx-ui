@@ -6,12 +6,12 @@ const ProtectedRoute = ({ component: Component, ...rest }) => (
   <Route
     {...rest}
     render={(props) => {
-      const currentUser = store.get("accessToken");
+      const currentUser = store.get("token");
       if (typeof currentUser === "undefined" || currentUser === null) {
         return (
           <Redirect
             to={{
-              pathname: "/",
+              pathname: "/login",
               state: { from: props.location },
             }}
           />
