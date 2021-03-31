@@ -7,7 +7,7 @@ const PageHelmet = ({ title }) => {
   // const defaultData = store.get("default");
   return (
     <Helmet>
-      <title>{title} - LOLA Administrator Management Interface</title>
+      <title>{title} - Doctor X</title>
       {/* <link rel="icon" href={logo} type="image/png" /> */}
     </Helmet>
   );

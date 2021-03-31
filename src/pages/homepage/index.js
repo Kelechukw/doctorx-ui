@@ -132,10 +132,58 @@ const Homepage = () => {
         <div class="services">
           <div class="container">
             <div class="row">
-              <div class="col">
+              <div class="col-md-12">
                 <div class="section_title">
-                  <h2>Videos Section (Placeholder)</h2>
+                  <h2>Videos Section </h2>
                 </div>
+              </div>
+              <div className="col-md-4" style={{ padding: "20px" }}>
+                <iframe
+                  width="350"
+                  height="345"
+                  title="Common Cold"
+                  src="https://www.youtube.com/embed/GsZFQwGFryc"
+                ></iframe>
+              </div>
+              <div className="col-md-4" style={{ padding: "20px" }}>
+                <iframe
+                  width="350"
+                  height="345"
+                  title="Cough"
+                  src="https://www.youtube.com/embed/uhxy6O1VeeM"
+                ></iframe>
+              </div>{" "}
+              <div className="col-md-4" style={{ padding: "20px" }}>
+                <iframe
+                  width="350"
+                  height="345"
+                  title="Indigestion"
+                  src="https://www.youtube.com/embed/b3JlESNl4QQ"
+                ></iframe>
+              </div>
+              <div className="col-md-4" style={{ padding: "20px" }}>
+                <iframe
+                  width="350"
+                  height="345"
+                  title="Stomach Upset"
+                  src="https://www.youtube.com/embed/jlqSw5VzF_k"
+                ></iframe>
+              </div>
+              <div className="col-md-4" style={{ padding: "20px" }}>
+                <iframe
+                  width="350"
+                  height="345"
+                  title="Cold Sores"
+                  src="https://www.youtube.com/embed/UD0betNq74c"
+                ></iframe>
+              </div>
+              <div className="col-md-4" style={{ padding: "20px" }}>
+                <iframe
+                  width="350"
+                  height="345"
+                  title="Sore throat"
+                  src="https://www.youtube.com/embed/LgZ3q7JykXc"
+                ></iframe>
               </div>
             </div>
             <div class="row services_row">
