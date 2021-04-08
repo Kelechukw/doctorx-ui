@@ -1,32 +1,28 @@
-import React, { useContext, useEffect, useState, useCallback } from "react";
+import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
-import MainWrapper from "../components/layout/MainWrapper";
-import { SocketContext } from "../socket/socket";
+import { getAllConversation } from "../../api";
+import MainWrapper from "../../components/layout/MainWrapper";
 
-const WaitingRoom = () => {
-  const socket = useContext(SocketContext);
-  const [users, setUsers] = useState([]);
+const AllConversation = () => {
+  const [conversations, setConversation] = useState([]);
 
-  const handleSetUsers = useCallback(({ users }) => {
-    setUsers(users);
+  useEffect(() => {
+    fetchData();
   }, []);
 
-  useEffect(() => {
-    socket.on("roomData", handleSetUsers);
-  }, [users, socket, handleSetUsers]);
-
-  useEffect(() => {
-    socket.emit("getRoom");
-  }, [socket]);
+  const fetchData = async () => {
+    const responseData = await getAllConversation();
+    setConversation(responseData.data);
+  };
 
   return (
-    <MainWrapper title="Waiting room">
+    <MainWrapper title="All conversation">
       <div class="page-content page-container" id="page-content">
         <div class="container">
           <div class="row">
             <div class="col-md-8">
               <div class="people-nearby">
-                {users.map((user) => (
+                {conversations.map((conversation) => (
                   <div class="nearby-user">
                     <div class="row">
                       <div class="col-md-2 col-sm-2">
@@ -39,17 +35,15 @@ const WaitingRoom = () => {
                       <div class="col-md-7 col-sm-7">
                         <h5>
                           <a href="/" class="profile-link">
-                            {user.name}
+                            {conversation.conversationWith}
                           </a>
                         </h5>
-                        <p>Software Engineer</p>
-                        <p class="text-muted">{user.roomId}</p>
-                        <p class="text-muted">500m away</p>
+                        <p>Last message: {conversation.message}</p>
                       </div>
                       <div class="col-md-3 col-sm-3">
-                        <Link to={`/chat?sessionId=${user.roomId}`}>
+                        <Link to={`/chat?sessionId=${conversation.id}`}>
                           <button class="btn btn-primary pull-right">
-                            Enter Chat
+                            Chat
                           </button>
                         </Link>
                       </div>
@@ -65,4 +59,4 @@ const WaitingRoom = () => {
   );
 };
 
-export default WaitingRoom;
+export default AllConversation;

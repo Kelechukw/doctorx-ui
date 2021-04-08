@@ -6,7 +6,8 @@ import Login from "../pages/auth/Login";
 import Signup from "../pages/auth/Signup";
 import Signout from "../pages/auth/Signout";
 import Homepage from "../pages/homepage";
-import Chat from "../pages/chat";
+import ChatWithDoctor from "../pages/chat/chatWithDoctor";
+import AllConversation from "../pages/chat/AllConversation";
 import About from "../pages/about";
 import WaitingRoom from "../pages/WaitingRoom";
 
@@ -17,7 +18,12 @@ const MainRoutes = () => {
         <PublicRoute exact path="/" component={Homepage} />
         <PublicRoute exact path="/login" component={Login} />
         <PublicRoute exact path="/signup" component={Signup} />
-        <ProtectedRoute exact path="/chat" component={Chat} />
+        <ProtectedRoute exact path="/chat" component={ChatWithDoctor} />
+        <ProtectedRoute
+          exact
+          path="/allconversation"
+          component={AllConversation}
+        />
         <PublicRoute exact path="/about" component={About} />
         <PublicRoute exact path="/waiting-room" component={WaitingRoom} />
         <ProtectedRoute exact path="/signout" component={Signout} />

@@ -10,7 +10,7 @@ const Chat = ({ location, history }) => {
   const [session, setSession] = useState("");
   const [messages, setMessages] = useState([]);
   const [message, setMessage] = useState("");
-  const { firstName, lastName, id: userId } = store.get("spn_user");
+  const { firstName, lastName, id: userId, role } = store.get("spn_user");
   const name = `${firstName} ${lastName}`;
   const socket = useContext(SocketContext);
 
@@ -24,14 +24,14 @@ const Chat = ({ location, history }) => {
 
     socket.emit(
       "join",
-      { room: sessionId, name, userId, isRoom: true },
+      { room: sessionId, name, userId, userRole: role, isRoom: true },
       (error) => {
         if (error) {
           alert(error);
         }
       }
     );
-  }, [name, location.search, session, socket, history, userId]);
+  }, [name, location.search, socket, history, userId, role]);
 
   useEffect(() => {
     socket.on("message", (message) => {

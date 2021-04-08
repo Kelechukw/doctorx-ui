@@ -11,12 +11,20 @@ const Header = ({ handleToggleSideBar, handleToggleMobileSideBar }) => {
       name: "Chat with a doctor",
       link: `/chat?sessionId=${uuidv4()}`,
     },
+    {
+      name: "All Conversations",
+      link: "/allconversation",
+    },
   ];
 
   const doctorLinks = [
     {
       name: "Waiting room",
       link: "/waiting-room",
+    },
+    {
+      name: "All Conversations",
+      link: "/allconversation",
     },
   ];
 
