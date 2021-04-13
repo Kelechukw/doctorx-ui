@@ -177,7 +177,9 @@ const renderMsg = (message) => {
             {message.user}
           </a>
           <span class="message-date">{message.date}</span>
-          <span class="message-content">{message.text}</span>
+          <span class="message-content">
+            {message.text ? message.text : message.message}
+          </span>
         </div>
       );
     case "image/png":
@@ -190,7 +192,11 @@ const renderMsg = (message) => {
           </a>
           <span class="message-date">{message.date}</span>
           <span class="message-content">
-            <img src={message.text} alt="" width="50%" />
+            <img
+              src={message.text ? message.text : message.message}
+              alt=""
+              width="50%"
+            />
           </span>
         </div>
       );
@@ -203,7 +209,11 @@ const renderMsg = (message) => {
           <span class="message-date">{message.date}</span>
           <span class="message-content">
             PDF: click{" "}
-            <a href={message.text} target="_blank" rel="noreferrer">
+            <a
+              href={message.text ? message.text : message.message}
+              target="_blank"
+              rel="noreferrer"
+            >
               here
             </a>{" "}
             to download
@@ -220,7 +230,11 @@ const renderMsg = (message) => {
           <span class="message-date">{message.date}</span>
           <span class="message-content">
             file: click{" "}
-            <a href={message.text} target="_blank" rel="noreferrer">
+            <a
+              href={message.text ? message.text : message.message}
+              target="_blank"
+              rel="noreferrer"
+            >
               here
             </a>{" "}
             to download
