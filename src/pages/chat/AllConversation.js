@@ -41,7 +41,9 @@ const AllConversation = () => {
                         <p>Last message: {conversation.message}</p>
                       </div>
                       <div class="col-md-3 col-sm-3">
-                        <Link to={`/chat?sessionId=${conversation.id}`}>
+                        <Link
+                          to={`/chat?sessionId=${conversation.id}&isRoom=false`}
+                        >
                           <button class="btn btn-primary pull-right">
                             Chat
                           </button>

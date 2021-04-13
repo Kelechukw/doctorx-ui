@@ -4,7 +4,7 @@ export const uploadFile = async (payload) => {
   try {
     const formData = new FormData();
 
-    formData.append("image", payload.image);
+    formData.append("file", payload.file);
 
     const url = "/upload/";
     const response = await axios.post(url, formData, {

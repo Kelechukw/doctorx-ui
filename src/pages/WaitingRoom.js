@@ -47,7 +47,7 @@ const WaitingRoom = () => {
                         <p class="text-muted">500m away</p>
                       </div>
                       <div class="col-md-3 col-sm-3">
-                        <Link to={`/chat?sessionId=${user.roomId}`}>
+                        <Link to={`/chat?sessionId=${user.roomId}&isRoom=true`}>
                           <button class="btn btn-primary pull-right">
                             Enter Chat
                           </button>
