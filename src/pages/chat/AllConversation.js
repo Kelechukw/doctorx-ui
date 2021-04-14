@@ -1,10 +1,12 @@
 import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import { getAllConversation } from "../../api";
+import store from "store";
 import MainWrapper from "../../components/layout/MainWrapper";
 
 const AllConversation = () => {
   const [conversations, setConversation] = useState([]);
+  const { id: userId } = store.get("spn_user");
 
   useEffect(() => {
     fetchData();
@@ -38,7 +40,13 @@ const AllConversation = () => {
                             {conversation.conversationWith}
                           </a>
                         </h5>
-                        <p>Last message: {conversation.message}</p>
+                        <p>
+                          {console.log(conversation.from, userId)}
+                          {conversation.from === userId
+                            ? "you: "
+                            : conversation.conversationWith + ":"}
+                          {conversation.message}
+                        </p>
                       </div>
                       <div class="col-md-3 col-sm-3">
                         <Link
