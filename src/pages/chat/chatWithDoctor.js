@@ -1,4 +1,10 @@
-import React, { useContext, useEffect, useState } from "react";
+import React, {
+  useCallback,
+  useContext,
+  useEffect,
+  useRef,
+  useState,
+} from "react";
 import { SocketContext } from "../../socket/socket";
 import store from "store";
 import queryString from "query-string";
@@ -13,21 +19,33 @@ const Chat = ({ location, history }) => {
   const [messages, setMessages] = useState([]);
   const [message, setMessage] = useState("");
   const [isSendingFile, setIsSendingFile] = useState(false);
+  const [isRoom, setIsRoom] = useState(false);
   const { firstName, lastName, id: userId, role } = store.get("spn_user");
   const name = `${firstName} ${lastName}`;
   const socket = useContext(SocketContext);
+  const chatboxRef = useRef();
+  const emptyRef = useRef();
+
+  const getMsgs = useCallback(async () => {
+    const { sessionId } = queryString.parse(location.search);
+
+    if (sessionId.split("-").length === 2) {
+      const messages = await getAllMessages(sessionId);
+      setMessages(messages);
+    }
+  }, [location.search]);
 
   useEffect(() => {
-    const getMsgs = async () => {
-      const { sessionId } = queryString.parse(location.search);
-
-      if (sessionId.split("-").length === 2) {
-        const messages = await getAllMessages(sessionId);
-        setMessages(messages);
-      }
+    const init = async () => {
+      await getMsgs();
+      chatboxScroll();
     };
-    getMsgs();
-  }, [location.search]);
+    init();
+  }, [getMsgs]);
+
+  const chatboxScroll = () => {
+    chatboxRef.current?.scrollIntoView({ behavior: "smooth" });
+  };
 
   useEffect(() => {
     const { sessionId, isRoom } = queryString.parse(location.search);
@@ -36,6 +54,7 @@ const Chat = ({ location, history }) => {
     }
 
     setSession(sessionId);
+    setIsRoom(isRoom === "true");
 
     socket.emit(
       "join",
@@ -58,6 +77,7 @@ const Chat = ({ location, history }) => {
     socket.on("message", (message) => {
       setMessages((messages) => [...messages, message]);
     });
+    chatboxScroll();
   }, [socket]);
 
   const handleInputChange = (e) => {
@@ -70,7 +90,7 @@ const Chat = ({ location, history }) => {
     if (message) {
       socket.emit(
         "sendMessage",
-        { message, room: session, type: "text", userId },
+        { message, room: session, type: "text", userId, isRoom },
         () => setMessage("")
       );
     }
@@ -108,24 +128,31 @@ const Chat = ({ location, history }) => {
                   <div class="row">
                     <div class="col-md-12 ">
                       <div class="chat-discussion">
-                        {messages.map((message) => (
-                          <div
-                            class={`chat-message ${
-                              message.user !== "admin" &&
-                              message.user === name.trim().toLowerCase()
-                                ? "right"
-                                : "left"
-                            }`}
-                          >
-                            {message.user !== "admin" && (
-                              <img
-                                class="message-avatar"
-                                src="https://bootdey.com/img/Content/avatar/avatar1.png"
-                                alt=""
-                              />
-                            )}
-                            {renderMsg(message)}
-                          </div>
+                        {messages.map((message, i) => (
+                          <>
+                            <div
+                              class={`chat-message ${
+                                message.user !== "admin" &&
+                                message.user === name.trim().toLowerCase()
+                                  ? "right"
+                                  : "left"
+                              }`}
+                              ref={
+                                i === messages.length - 3
+                                  ? chatboxRef
+                                  : emptyRef
+                              }
+                            >
+                              {message.user !== "admin" && (
+                                <img
+                                  class="message-avatar"
+                                  src="https://bootdey.com/img/Content/avatar/avatar1.png"
+                                  alt=""
+                                />
+                              )}
+                              {renderMsg(message)}
+                            </div>
+                          </>
                         ))}
                       </div>
                     </div>

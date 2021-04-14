@@ -56,6 +56,16 @@ const WaitingRoom = () => {
                     </div>
                   </div>
                 ))}
+                {users.length === 0 && (
+                  <div
+                    style={{
+                      padding: "1rem",
+                      margin: "1rem",
+                    }}
+                  >
+                    There are no user in waiting room
+                  </div>
+                )}
               </div>
             </div>
           </div>

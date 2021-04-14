@@ -52,6 +52,16 @@ const AllConversation = () => {
                     </div>
                   </div>
                 ))}
+                {conversations.length === 0 && (
+                  <div
+                    style={{
+                      padding: "1rem",
+                      margin: "1rem",
+                    }}
+                  >
+                    You have not initiated any conversation
+                  </div>
+                )}
               </div>
             </div>
           </div>

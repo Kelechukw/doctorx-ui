@@ -9,7 +9,7 @@ const Header = ({ handleToggleSideBar, handleToggleMobileSideBar }) => {
   const userLinks = [
     {
       name: "Chat with a doctor",
-      link: `/chat?sessionId=${uuidv4()}`,
+      link: `/chat?sessionId=${uuidv4()}&isRoom=true`,
     },
     {
       name: "All Conversations",
