@@ -1,10 +1,10 @@
 import React, { useState } from "react";
 import { withRouter } from "react-router-dom";
-import PageHelmet from "../../components/pageHelmet";
 import store from "store";
 import { validateAll } from "indicative/validator";
 import { triggerError, triggerSuccess } from "../../components/alerts";
 import { signInAction } from "../../api";
+import MainWrapper from "../../components/layout/MainWrapper";
 
 const Login = (props) => {
   const [formData, setFormData] = useState({});
@@ -69,51 +69,50 @@ const Login = (props) => {
   };
   return (
     <>
-      <PageHelmet title="Login" />
-
-      <div id="login">
-        <h3 class="text-center text-white pt-5">Doctors Login</h3>
-        <div class="container">
-          <div
-            id="login-row"
-            class="row justify-content-center align-items-center"
-          >
-            <div id="login-column" class="col-md-6">
-              <div id="login-box" class="col-md-12">
-                <form id="login-form" class="form" onSubmit={handleSubmit}>
-                  <h3 class="text-center text-info">Login</h3>
-                  <div class="form-group">
-                    <label for="email" class="text-info">
-                      Username:
-                    </label>
-                    <br />
-                    <input
-                      type="text"
-                      name="email"
-                      id="email"
-                      onChange={handleInputChange}
-                      class="form-control"
-                    />
-                    <div style={{ color: "red" }}>{error && error.email}</div>
-                  </div>
-                  <div class="form-group">
-                    <label for="password" class="text-info">
-                      Password:
-                    </label>
-                    <br />
-                    <input
-                      type="password"
-                      name="password"
-                      id="password"
-                      onChange={handleInputChange}
-                      class="form-control"
-                    />
-                    <div style={{ color: "red" }}>
-                      {error && error.password}
+      <MainWrapper title="Signup">
+        <div id="login">
+          <h3 class="text-center text-white">Doctors Login</h3>
+          <div class="container">
+            <div
+              id="login-row"
+              class="row justify-content-center align-items-center"
+            >
+              <div id="login-column" class="col-md-6">
+                <div id="login-box" class="col-md-12">
+                  <form id="login-form" class="form" onSubmit={handleSubmit}>
+                    <h3 class="text-center text-info">Login</h3>
+                    <div class="form-group">
+                      <label for="email" class="text-info">
+                        Username:
+                      </label>
+                      <br />
+                      <input
+                        type="text"
+                        name="email"
+                        id="email"
+                        onChange={handleInputChange}
+                        class="form-control"
+                      />
+                      <div style={{ color: "red" }}>{error && error.email}</div>
                     </div>
-                  </div>
-                  <div class="form-group">
-                    {/* <label for="remember-me" class="text-info">
+                    <div class="form-group">
+                      <label for="password" class="text-info">
+                        Password:
+                      </label>
+                      <br />
+                      <input
+                        type="password"
+                        name="password"
+                        id="password"
+                        onChange={handleInputChange}
+                        class="form-control"
+                      />
+                      <div style={{ color: "red" }}>
+                        {error && error.password}
+                      </div>
+                    </div>
+                    <div class="form-group">
+                      {/* <label for="remember-me" class="text-info">
                       <span>Remember me</span>{" "}
                       <span>
                         <input
@@ -123,20 +122,21 @@ const Login = (props) => {
                         />
                       </span>
                     </label> */}
-                    <br />
-                    <input
-                      type="submit"
-                      name="submit"
-                      class="btn btn-info btn-md"
-                      value={loading ? "Loading" : "Submit"}
-                    />
-                  </div>
-                </form>
+                      <br />
+                      <input
+                        type="submit"
+                        name="submit"
+                        class="btn btn-info btn-md"
+                        value={loading ? "Loading" : "Submit"}
+                      />
+                    </div>
+                  </form>
+                </div>
               </div>
             </div>
           </div>
         </div>
-      </div>
+      </MainWrapper>
     </>
   );
 };
