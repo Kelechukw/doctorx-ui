@@ -108,7 +108,7 @@ const Header = ({ handleToggleSideBar, handleToggleMobileSideBar }) => {
                         <div className="logo_text">Hospitale</div>
                         <div className="logo_box">+</div>
                       </div>
-                      <div className="logo_sub">Online Health Care Place</div>
+                      <div className="logo_sub">Online Health Care</div>
                     </div>
                   </a>
                 </div>
