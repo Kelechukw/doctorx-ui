@@ -19,7 +19,7 @@ const Header = ({ handleToggleSideBar, handleToggleMobileSideBar }) => {
 
   const doctorLinks = [
     {
-      name: "Waiting room",
+      name: "Waiting roomssss",
       link: "/waiting-room",
     },
     {
@@ -56,7 +56,7 @@ const Header = ({ handleToggleSideBar, handleToggleMobileSideBar }) => {
                         <Link to="/">Home</Link>
                       </li>
                       <li>
-                        <Link to="/about">Our Doctors</Link>
+                        <Link to="/about">Our Doctorssssss</Link>
                       </li>
                       {user && user.token ? (
                         <>
