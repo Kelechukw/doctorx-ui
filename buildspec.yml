@@ -13,4 +13,7 @@ artifacts:
   files:
     - config.js
     - index.js
+    - login.js
+    - signout.js
+    - signup.js
     
