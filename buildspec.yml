@@ -11,9 +11,6 @@ phases:
       - echo "Enteredin post-build phase"
 artifacts:
   files:
-    - index.php
-    - CRUDOps.php
-    - function.php
-    - db.php
-    - main.js
-    - style.css
+    - config.js
+    - index.js
+    
